@@ -25,3 +25,10 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+@layer components {
+  .d-flex{
+    @apply flex justify-center items-center 
+  }
+  .chartRows{
+    @apply rounded-lg p-5 text-sm flex items-center justify-center space-x-2 hover:bg-gray-700 cursor-pointer text-gray-300 transition-all duration-150 ease-out}
+}
