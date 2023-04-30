@@ -1,6 +1,6 @@
 import { HiOutlineLightningBolt } from "react-icons/hi";
 import { BiSun } from "react-icons/bi";
-import { ImWarning } from "react-icons/Im";
+import { ImWarning } from "react-icons/im";
 
 export const Tabs = [
   {

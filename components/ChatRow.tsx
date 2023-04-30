@@ -37,7 +37,7 @@ function ChatRow({ id }: { id: string }) {
     >
       <HiOutlineChatBubbleLeftEllipsis className="group-hover:text-amber-500" />
       <p>
-        {messages?.docs[messages?.docs.length - 1]?.data().text || "New Chat"}
+      {messages?.docs[messages?.docs.length - 1]?.data().text || "New Chat"}
       </p>
       <BsTrash className="group-hover:text-red-500 transition-all duration-1000" onClick={removeChat}/>
     </Link>

@@ -6,6 +6,7 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, orderBy, query } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
 import ChatRow from "./ChatRow";
+import ModelSelecetion from "./ModalSelection";
 
 export default function SideBar() {
   const { data: session } = useSession();
@@ -23,6 +24,7 @@ export default function SideBar() {
   return (
     <div className="p-2 flex flex-col w-[100%] overflow-y-auto max-w-[300px] min-w-[250px]  mx-auto">
       <div>
+      
         <div>
           {session && (
             <img
@@ -36,6 +38,8 @@ export default function SideBar() {
         </div>
         <div>
           <NewChat />
+          {/* <ModelSelecetion /> */}
+          <br />
           {chat?.docs.map((chat)=><ChatRow key={chat.id} id={chat.id}/>)}
         </div>
       </div>
