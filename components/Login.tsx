@@ -1,40 +1,24 @@
 "use client";
-import React from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import SideBar from "./SideBar";
 
-interface Iprops {
-  children: React.ReactNode;
-}
-function Login({ children }: Iprops) {
-  const { data } = useSession();
-  console.log(data);
-  if (data) {
-    return (
-      <div className="flex border w-full h-screen ">
-        <SideBar />
-        <div className="bg-[#343541]">{children}</div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="bg-[#11A37F] w-full h-screen d-flex flex-col gap-3 ">
-        <img
-          src="https://wpwww-prod.s3.us-west-2.amazonaws.com/uploads/sites/564/2023/04/ChatGPT.jpeg"
-          alt=""
-          width={300}
-          height={300}
-        />
-        <button
-          className=" font-bold text-3xl animate-pulse"
-          onClick={() => signIn("google")}
-        >
-          Sing In To Use ChatCpt
-        </button>
-      </div>
-    );
-  }
-}
+import { signIn } from "next-auth/react";
+import Image from "next/image";
+
+const Login = () => {
+  return (
+    <div className="bg-[#11a37f] h-screen flex flex-col items-center justify-center text-center">
+      <Image
+        src="https://uploads-ssl.webflow.com/621396eaae0610d2e24c450e/63d01548c5b3156b13a40e1f_ChatGPT-Feature-1200x900.png"
+        width={300}
+        height={300}
+        alt="logo"
+      />
+      <button
+        onClick={() => signIn("google")}
+        className="text-white font-bold text-3xl animate-pulse">
+        Sign In to use ChatGPT
+      </button>
+    </div>
+  );
+};
 
 export default Login;

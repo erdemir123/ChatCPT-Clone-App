@@ -4,9 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    images: {
-      domains: ["wpwww-prod.s3.us-west-2.amazonaws.com"],
-    },
+    domains: ['uploads-ssl.webflow.com'],
   },
 };
 

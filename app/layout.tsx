@@ -1,7 +1,7 @@
 import Head from "next/head";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Providers from "@/components/Providers";
+import { Providers } from "@/components/Providers";
 
 import Login from "@/components/Login";
 
@@ -10,7 +10,7 @@ import SideBar from "@/components/SideBar";
 import { getServerSession, unstable_getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getSession } from "next-auth/react";
-import { request } from "http";
+import ClientProvider from "@/components/ClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,15 +24,27 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession();
+  console.log(session);
   return (
     <html lang="en">
       <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </Head>
-      <body className={`${inter.className} flex w-full`}>
-        <Providers>
-          <Login>{children}</Login>
+      <body>
+        <Providers session={session}>
+          {!session ? (
+            <Login />
+          ) : (
+            <div className="flex">
+              <div className="bg-[#202123] max-w-xs h-screen overflow-y-auto md:min-w-[20rem]">
+                <SideBar />
+              </div>
+              <ClientProvider />
+              <div className="bg-[#343541] flex-1">{children}</div>
+            </div>
+          )}
         </Providers>
       </body>
     </html>
